@@ -60,4 +60,15 @@ public class RemindersRepository: ObservableObject {
         // Methode pour ajouter un document dans la collection
             .addDocument(from: reminder)
     }
+    
+    func updateReminder(_ reminder: Reminder) throws {
+        guard let documentId = reminder.id else {
+            throw ReminderError.missingDocumentId(reminder.title)
+        }
+        try Firestore
+            .firestore()
+            .collection(Reminder.collectionName)
+            .document(documentId)
+            .setData(from: reminder, merge: true)
+    }
 }
