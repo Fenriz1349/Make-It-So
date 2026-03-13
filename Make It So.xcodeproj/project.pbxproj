@@ -19,6 +19,7 @@
 		680F9C722F640FAA0014193B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 680F9C712F640FAA0014193B /* FirebaseAnalytics */; };
 		680F9C742F640FAA0014193B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 680F9C732F640FAA0014193B /* FirebaseAuth */; };
 		680F9C762F640FAA0014193B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 680F9C752F640FAA0014193B /* FirebaseFirestore */; };
+		680F9C792F641CC80014193B /* RemindersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680F9C782F641CC80014193B /* RemindersRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		680F9C692F6407F40014193B /* ReminderRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderRow.swift; sourceTree = "<group>"; };
 		680F9C6C2F64097E0014193B /* ReminderToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderToggleStyle.swift; sourceTree = "<group>"; };
 		680F9C6E2F640DB20014193B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		680F9C782F641CC80014193B /* RemindersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				680F9C632F6404690014193B /* ViewModels */,
 				680F9C622F6404610014193B /* Views */,
 				680F9C6B2F64096E0014193B /* Styles */,
+				680F9C772F641CAF0014193B /* Repositories */,
 			);
 			path = Reminders;
 			sourceTree = "<group>";
@@ -126,6 +129,14 @@
 				680F9C6C2F64097E0014193B /* ReminderToggleStyle.swift */,
 			);
 			path = Styles;
+			sourceTree = "<group>";
+		};
+		680F9C772F641CAF0014193B /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				680F9C782F641CC80014193B /* RemindersRepository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +223,7 @@
 				680F9C5A2F6404360014193B /* AddReminderView.swift in Sources */,
 				680F9C6A2F6407F40014193B /* ReminderRow.swift in Sources */,
 				680F9C5B2F6404360014193B /* RemindersListView.swift in Sources */,
+				680F9C792F641CC80014193B /* RemindersRepository.swift in Sources */,
 				680F9C5C2F6404360014193B /* Make_It_SoApp.swift in Sources */,
 				680F9C5D2F6404360014193B /* Reminder.swift in Sources */,
 			);
