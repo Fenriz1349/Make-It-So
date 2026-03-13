@@ -16,7 +16,9 @@ struct ReminderRow: View {
             Toggle(isOn: $reminder.isCompleted) { /* empty on purpose */ }
                 .toggleStyle(.reminder)
             Text(reminder.title)
+            Spacer()
         }
+        .contentShape(Rectangle())
     }
 }
 

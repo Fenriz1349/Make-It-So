@@ -1,5 +1,5 @@
 //
-//  AddReminderView.swift
+//  EditReminderDetailsView.swift
 //  Make It So
 //
 //  Created by Julien Cotte on 13/03/2026.
@@ -7,7 +7,14 @@
 
 import SwiftUI
 
-struct AddReminderView: View {
+struct EditReminderDetailsView: View {
+    
+    enum Mode {
+       case add
+       case edit
+     }
+
+     var mode: Mode = .add
 
     enum FocusableField: Hashable {
         case title
@@ -16,7 +23,7 @@ struct AddReminderView: View {
     @Environment(\.dismiss) private var dismiss
     @FocusState private var focusedField: FocusableField?
 
-    @State private var reminder = Reminder(title: "")
+    @State var reminder = Reminder(title: "")
 
     var onCommit: (_ reminder: Reminder) -> Void
 
@@ -34,8 +41,11 @@ struct AddReminderView: View {
             Form {
                 TextField("Title", text: $reminder.title)
                     .focused($focusedField, equals: .title)
+                    .onSubmit {
+                        commit()
+                    }
             }
-            .navigationTitle("New Reminder")
+            .navigationTitle(mode == .add ? "New Reminder" : "Details")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -45,7 +55,7 @@ struct AddReminderView: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button(action: commit) {
-                        Text("Add")
+                        Text(mode == .add ? "Add" : "Done")
                     }
                     .disabled(reminder.title.isEmpty)
                     
@@ -58,8 +68,20 @@ struct AddReminderView: View {
     }
 }
 
-#Preview {
-    AddReminderView { reminder in
-          print("You added a new reminder titled \(reminder.title)")
-        }
+struct EditReminderDetailsView_Previews: PreviewProvider {
+  struct Container: View {
+    @State var reminder = Reminder.samples[0]
+    var body: some View {
+      EditReminderDetailsView(mode: .edit, reminder: reminder) { reminder in
+        print("You edited a reminder: \(reminder.title)")
+      }
+    }
+  }
+
+  static var previews: some View {
+    EditReminderDetailsView { reminder in
+      print("You added a reminder: \(reminder.title)")
+    }
+    Container()
+  }
 }

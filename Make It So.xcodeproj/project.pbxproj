@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		680F9C5A2F6404360014193B /* AddReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680F9C542F6404360014193B /* AddReminderView.swift */; };
+		680F9C5A2F6404360014193B /* EditReminderDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680F9C542F6404360014193B /* EditReminderDetailsView.swift */; };
 		680F9C5B2F6404360014193B /* RemindersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680F9C562F6404360014193B /* RemindersListView.swift */; };
 		680F9C5C2F6404360014193B /* Make_It_SoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680F9C572F6404360014193B /* Make_It_SoApp.swift */; };
 		680F9C5D2F6404360014193B /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680F9C582F6404360014193B /* Reminder.swift */; };
@@ -25,7 +25,7 @@
 
 /* Begin PBXFileReference section */
 		680F9C422F63F9400014193B /* Make It So.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Make It So.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		680F9C542F6404360014193B /* AddReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderView.swift; sourceTree = "<group>"; };
+		680F9C542F6404360014193B /* EditReminderDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReminderDetailsView.swift; sourceTree = "<group>"; };
 		680F9C552F6404360014193B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		680F9C562F6404360014193B /* RemindersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersListView.swift; sourceTree = "<group>"; };
 		680F9C572F6404360014193B /* Make_It_SoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Make_It_SoApp.swift; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				680F9C562F6404360014193B /* RemindersListView.swift */,
-				680F9C542F6404360014193B /* AddReminderView.swift */,
+				680F9C542F6404360014193B /* EditReminderDetailsView.swift */,
 				680F9C692F6407F40014193B /* ReminderRow.swift */,
 			);
 			path = Views;
@@ -223,7 +223,7 @@
 			files = (
 				680F9C6D2F64097E0014193B /* ReminderToggleStyle.swift in Sources */,
 				680F9C652F6404C80014193B /* RemindersListViewModel.swift in Sources */,
-				680F9C5A2F6404360014193B /* AddReminderView.swift in Sources */,
+				680F9C5A2F6404360014193B /* EditReminderDetailsView.swift in Sources */,
 				680F9C6A2F6407F40014193B /* ReminderRow.swift in Sources */,
 				680F9C5B2F6404360014193B /* RemindersListView.swift in Sources */,
 				680F9C792F641CC80014193B /* RemindersRepository.swift in Sources */,
