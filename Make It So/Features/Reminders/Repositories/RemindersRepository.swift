@@ -71,4 +71,15 @@ public class RemindersRepository: ObservableObject {
             .document(documentId)
             .setData(from: reminder, merge: true)
     }
+    
+    func removeReminder(_ reminder: Reminder) throws {
+        guard let documentId = reminder.id else {
+            throw ReminderError.missingDocumentId(reminder.title)
+        }
+        Firestore
+            .firestore()
+            .collection(Reminder.collectionName)
+            .document(documentId)
+            .delete()
+    }
 }
