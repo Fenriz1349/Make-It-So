@@ -12,21 +12,26 @@ struct RemindersListView: View {
     
     @State private var isAddReminderDialogPresented = false
     @State private var editableReminder: Reminder? = nil
+    @State private var isSettingsScreenPresented = false
 
     private func presentAddReminderView() {
-       isAddReminderDialogPresented.toggle()
-     }
+        isAddReminderDialogPresented.toggle()
+    }
+
+    private func presentSettingsScreen() {
+        isSettingsScreenPresented.toggle()
+    }
 
     var body: some View {
         List($viewModel.reminders) { $reminder in
-            ReminderRow(reminder:  $reminder)
+            ReminderRow(reminder: $reminder)
                 .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                     Button(role: .destructive, action: { viewModel.deleteReminder(reminder) }) {
                         Image(systemName: "trash")
                     }
                     .tint(Color(UIColor.systemRed))
                 }
-                .onChange(of: reminder.isCompleted) { _, newValue in
+                .onChange(of: reminder.isCompleted) { newValue in
                     viewModel.setCompleted(reminder, isCompleted: newValue)
                 }
                 .onTapGesture {
@@ -34,6 +39,11 @@ struct RemindersListView: View {
                 }
         }
         .toolbar {
+            ToolbarItem(placement: .confirmationAction) {
+                Button(action: presentSettingsScreen) {
+                    Image(systemName: "gearshape")
+                }
+            }
             ToolbarItemGroup(placement: .bottomBar) {
                 Button(action: presentAddReminderView) {
                     HStack {
@@ -54,13 +64,18 @@ struct RemindersListView: View {
                 viewModel.updateReminder(reminder)
             }
         }
+        .sheet(isPresented: $isSettingsScreenPresented) {
+            SettingsView()
+        }
         .tint(.red)
     }
 }
 
-#Preview {
-    NavigationStack {
-        RemindersListView()
-            .navigationTitle("Reminders")
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationStack {
+            RemindersListView()
+                .navigationTitle("Reminders")
+        }
     }
 }
