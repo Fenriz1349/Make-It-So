@@ -6,9 +6,13 @@
 //
 
 import Combine
+import Factory
 import FirebaseFirestore
 
 public class RemindersRepository: ObservableObject {
+
+    // MARK: - Dependencies
+      @Injected(\.firestore) var firestore
 
     private var listenerRegistration: ListenerRegistration?
 
@@ -24,7 +28,7 @@ public class RemindersRepository: ObservableObject {
 
     func subscribe() {
         if listenerRegistration == nil {
-            let query = Firestore.firestore().collection(Reminder.collectionName)
+            let query = firestore.collection(Reminder.collectionName)
 
             listenerRegistration = query.addSnapshotListener { [weak self] (querySnapshot, error) in
                 guard let documents = querySnapshot?.documents else {
@@ -54,7 +58,7 @@ public class RemindersRepository: ObservableObject {
      }
 
     func addReminder(_ reminder: Reminder) throws {
-        try Firestore.firestore()
+        try firestore
         // Path vers la collection firestore qui va stocker les reminders
             .collection("reminders")
         // Methode pour ajouter un document dans la collection
@@ -65,8 +69,7 @@ public class RemindersRepository: ObservableObject {
         guard let documentId = reminder.id else {
             throw ReminderError.missingDocumentId(reminder.title)
         }
-        try Firestore
-            .firestore()
+        try firestore
             .collection(Reminder.collectionName)
             .document(documentId)
             .setData(from: reminder, merge: true)
@@ -76,8 +79,7 @@ public class RemindersRepository: ObservableObject {
         guard let documentId = reminder.id else {
             throw ReminderError.missingDocumentId(reminder.title)
         }
-        Firestore
-            .firestore()
+        firestore
             .collection(Reminder.collectionName)
             .document(documentId)
             .delete()
